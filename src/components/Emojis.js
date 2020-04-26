@@ -1,7 +1,6 @@
 // images.js
 let emojis = {
   "👽": "alien.svg",
-  "🤡": "clown_face.svg",
   "👑": "crown.svg",
   "👻": "ghost.svg",
   "🍇": "grapes.svg",

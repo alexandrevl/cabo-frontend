@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Media from "./components/Media.js";
-import Answers from "./components/Answers.js";
 import socketIOClient from "socket.io-client";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import SocketContext from "./components/SocketContext.js";
 import GameContext from "./components/GameContext.js";
+import Team1Context from "./components/Team1Context.js";
+import Team2Context from "./components/Team2Context.js";
 import LifeBar from "./components/LifeBar.js";
+import Center from "./components/Center.js";
 import victory from "./img/victory.gif";
 
 export default function App() {
   const [socket, setSocket] = useState(null);
   const [gameSettings, setGameSettings] = useState(null);
+  const [team1, setTeam1] = useState(null);
+  const [team2, setTeam2] = useState(null);
   const [isReady, setIsReady] = useState(false);
   const [youtubeOff, setYoutubeOff] = useState(false);
 
   useEffect(() => {
     let idLive = window.location.pathname.split("/")[1];
-    console.log(window.location);
+    //console.log(window.location);
 
     let url = "https://multistreamer.xyz:21211?idLive=" + idLive;
     // if (window.location.hostname.includes("mrguinas")) {
@@ -30,7 +33,7 @@ export default function App() {
     //     "&now=" +
     //     Date.now();
     // }
-    //url = "https://localhost:21211?idLive=" + idLive;
+    url = "https://localhost:21266?idLive=" + idLive;
     console.log(url);
     const socket = socketIOClient(url);
     // const socket = socketIOClient(
@@ -38,25 +41,32 @@ export default function App() {
     //     window.location.hostname +
     //     ":21211!?idLive=" +
     //     idLive
-    // );
-    setYoutubeOff(true);
+    // // );
+    setYoutubeOff(false);
     setSocket(socket);
     socket.on("gameSettings", gameSettings => {
       console.log(gameSettings);
       setGameSettings(gameSettings);
       setIsReady(true);
+      //socket.emit("nextBattle");
     });
     socket.on("youtubeOff", () => {
-      setYoutubeOff(true);
-      setIsReady(false);
+      //setYoutubeOff(true);
+      //setIsReady(false);
+    });
+    socket.on("team1", team => {
+      setTeam1(team);
+    });
+    socket.on("team2", team => {
+      setTeam2(team);
     });
   }, []);
 
   function notWorking() {
     if (youtubeOff) {
-      return "Utilize http://" + window.location.hostname + "/IDLIVEYOUTUBE";
+      return "Utilize https://" + window.location.hostname + "/IDLIVEYOUTUBE";
     } else {
-      return "Carregando...";
+      return <Spinner animation="border" />;
     }
   }
   function winner() {
@@ -68,26 +78,30 @@ export default function App() {
       return (
         <div className="App">
           <GameContext.Provider value={gameSettings}>
-            <SocketContext.Provider value={socket}>
-              <LifeBar gameSettings={gameSettings} />
-              <br />
-              <br />
-              <Container fluid>
-                <Row className="justify-content-md-center">
-                  <Col>
-                    <img src={victory} width="600vw" alt="VS" />
-                  </Col>
-                </Row>
-                <br />
-                <Row className="justify-content-md-center">
-                  <Col>
-                    <h1>
-                      <b>{winner()}</b>
-                    </h1>
-                  </Col>
-                </Row>
-              </Container>
-            </SocketContext.Provider>
+            <Team1Context.Provider value={team1}>
+              <Team2Context.Provider value={team2}>
+                <SocketContext.Provider value={socket}>
+                  <LifeBar gameSettings={gameSettings} />
+                  <br />
+                  <br />
+                  <Container fluid>
+                    <Row className="justify-content-md-center">
+                      <Col>
+                        <img src={victory} width="600vw" alt="VS" />
+                      </Col>
+                    </Row>
+                    <br />
+                    <Row className="justify-content-md-center">
+                      <Col>
+                        <h1>
+                          <b>{winner()}</b>
+                        </h1>
+                      </Col>
+                    </Row>
+                  </Container>
+                </SocketContext.Provider>
+              </Team2Context.Provider>
+            </Team1Context.Provider>
           </GameContext.Provider>
         </div>
       );
@@ -95,23 +109,25 @@ export default function App() {
       return (
         <div className="App">
           <GameContext.Provider value={gameSettings}>
-            <SocketContext.Provider value={socket}>
-              <LifeBar gameSettings={gameSettings} />
-              <Container fluid>
-                <Row className="justify-content-md-center">
-                  <Col>
-                    <Media />
-                  </Col>
-                </Row>
-                <br />
-                <br />
-                <Row className="justify-content-md-center">
-                  <Col>
-                    <Answers />
-                  </Col>
-                </Row>
-              </Container>
-            </SocketContext.Provider>
+            <Team1Context.Provider value={team1}>
+              <Team2Context.Provider value={team2}>
+                <SocketContext.Provider value={socket}>
+                  <LifeBar gameSettings={gameSettings} />
+                  <Container fluid className="h-100">
+                    <Row className="justify-content-md-center">
+                      <Col></Col>
+                    </Row>
+                    <br />
+                    <br />
+                    <Row className="justify-content-md-center">
+                      <Col>
+                        <Center />
+                      </Col>
+                    </Row>
+                  </Container>
+                </SocketContext.Provider>
+              </Team2Context.Provider>
+            </Team1Context.Provider>
           </GameContext.Provider>
         </div>
       );
