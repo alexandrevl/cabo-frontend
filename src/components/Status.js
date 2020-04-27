@@ -6,7 +6,7 @@ import { Animated } from "react-animated-css";
 export default function Status(props) {
   const [visible, setVisible] = useState(true);
   const [battleId, setBattleId] = useState(true);
-  const [timeAnimation] = useState(20000);
+  const [timeAnimation] = useState(30000);
 
   useEffect(() => {
     if (battleId !== props.battle.id) {

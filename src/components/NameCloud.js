@@ -6,7 +6,7 @@ const options = {
   enableTooltip: false,
   deterministic: false,
   fontFamily: "impact",
-  fontSizes: [5, 60],
+  fontSizes: [5, 50],
   fontStyle: "normal",
   fontWeight: "normal",
   padding: 1,
