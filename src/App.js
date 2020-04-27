@@ -23,17 +23,10 @@ export default function App() {
     let idLive = window.location.pathname.split("/")[1];
     //console.log(window.location);
 
-    let url = "https://multistreamer.xyz:21211?idLive=" + idLive;
-    // if (window.location.hostname.includes("mrguinas")) {
-    //   url =
-    //     window.location.protocol +
-    //     "//mrguinas.com.br" +
-    //     ":21211?idLive=" +
-    //     idLive +
-    //     "&now=" +
-    //     Date.now();
-    // }
-    url = "https://localhost:21266?idLive=" + idLive;
+    let url = "https://localhost:21266?idLive=" + idLive;
+    if (window.location.hostname.includes("mrguinas")) {
+      url = "https://multistreamer.xyz:21211?idLive=" + idLive;
+    }
     console.log(url);
     const socket = socketIOClient(url);
     // const socket = socketIOClient(
@@ -61,12 +54,19 @@ export default function App() {
       setTeam2(team);
     });
   }, []);
-
   function notWorking() {
     if (youtubeOff) {
       return "Utilize https://" + window.location.hostname + "/IDLIVEYOUTUBE";
     } else {
-      return <Spinner animation="border" />;
+      return (
+        <Spinner
+          animation="border"
+          variant="dark"
+          style={{ width: "8rem", height: "8rem" }}
+        >
+          <span class="sr-only">Loading...</span>
+        </Spinner>
+      );
     }
   }
   function winner() {
@@ -133,6 +133,22 @@ export default function App() {
       );
     }
   } else {
-    return <div>{notWorking()}</div>;
+    return (
+      <Container fluid className="align-middle h-100">
+        <Row className="justify-content-md-center align-middle h-100">
+          <Col className="text-center align-middle h-100">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            {notWorking()}
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
