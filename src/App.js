@@ -25,7 +25,7 @@ export default function App() {
 
     let url = "https://localhost:21266?idLive=" + idLive;
     if (window.location.hostname.includes("mrguinas")) {
-      url = "https://multistreamer.xyz:21211?idLive=" + idLive;
+      url = "https://multistreamer.xyz:21266?idLive=" + idLive;
     }
     console.log(url);
     const socket = socketIOClient(url);
