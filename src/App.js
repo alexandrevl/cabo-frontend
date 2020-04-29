@@ -44,8 +44,8 @@ export default function App() {
       //socket.emit("nextBattle");
     });
     socket.on("youtubeOff", () => {
-      //setYoutubeOff(true);
-      //setIsReady(false);
+      setYoutubeOff(true);
+      setIsReady(false);
     });
     socket.on("team1", team => {
       setTeam1(team);
@@ -64,7 +64,7 @@ export default function App() {
           variant="dark"
           style={{ width: "8rem", height: "8rem" }}
         >
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </Spinner>
       );
     }
