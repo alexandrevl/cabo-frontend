@@ -2,38 +2,55 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Animated } from 'react-animated-css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShieldAlt, faFire, faFireAlt } from '@fortawesome/free-solid-svg-icons';
+import imgAttack1 from './../img/CaboAtaquePragas.png';
+import imgAttack2 from './../img/CaboAtaqueVermes.png';
+import imgDefense1 from './../img/CaboDefesaVermes.png';
+import imgDefense2 from './../img/CaboDefesaPragas.png';
 
 export default function Status(props) {
 	const [visible, setVisible] = useState(false);
 	const [battleId, setBattleId] = useState(true);
-	const [faSettings, setFaSettings] = useState({
-		attack: { icon: faFireAlt, color: 'red' },
-		defense: { icon: faShieldAlt, color: 'blue' },
-	});
+	const [attack, setAttack] = useState();
+	const [defense, setDefense] = useState();
+	// const [faSettings, setFaSettings] = useState({
+	// 	attack: { icon: faFireAlt, color: 'red' },
+	// 	defense: { icon: faShieldAlt, color: 'blue' },
+	// });
 	const [timeAnimation] = useState(30000);
 
 	useEffect(() => {
 		if (battleId !== props.battle.id) {
 			setVisible(true);
 			setBattleId(props.battle.id);
-		}
-		if (props.team.id === 1) {
-			setFaSettings({
-				attack: { icon: faFireAlt, color: 'red' },
-				defense: { icon: faShieldAlt, color: 'blue' },
-			});
-		} else {
-			setFaSettings({
-				attack: { icon: faFire, color: 'red' },
-				defense: { icon: faShieldAlt, color: 'green' },
-			});
+			if (props.team.id === 1) {
+				setAttack(<img src={imgAttack2} width="450vw" alt="Ataque" />);
+				setDefense(<img src={imgDefense2} width="450vw" alt="Defesa" />);
+			} else {
+				setAttack(<img src={imgAttack1} width="450vw" alt="Ataque" />);
+				setDefense(<img src={imgDefense1} width="450vw" alt="Defesa" />);
+			}
+			// let sizeAttack = '5x';
+			// let sizeDefense = '3x';
+			// if (props.team.status.defense && props.team.status.hitPoints < props.team.status.defense.value / 2) {
+			// 	sizeAttack = '3x';
+			// 	sizeDefense = '5x';
+			// }
+			// if (props.team.id === 1) {
+			// 	setFaSettings({
+			// 		attack: { icon: faFireAlt, color: 'red', size: sizeAttack },
+			// 		defense: { icon: faShieldAlt, color: 'blue', size: sizeDefense },
+			// 	});
+			// } else {
+			// 	setFaSettings({
+			// 		attack: { icon: faFire, color: 'red', size: sizeAttack },
+			// 		defense: { icon: faShieldAlt, color: 'green', size: sizeDefense },
+			// 	});
+			// }
 		}
 		setTimeout(() => {
 			setVisible(false);
 		}, 3000);
-	}, [battleId, props.battle.id, props.team.id]);
+	}, [battleId, props]);
 
 	if (props.battle.isPlay) {
 		return (
@@ -43,40 +60,18 @@ export default function Status(props) {
 						<Col>
 							<Animated animationOut="zoomOut" animationOutDuration={timeAnimation} isVisible={visible}>
 								<h1>
-									<FontAwesomeIcon icon={faSettings.attack.icon} color={faSettings.attack.color} size="5x" />
+									{attack}
 									<br />
 									{props.team.status.hitPoints}
 								</h1>
 							</Animated>
 						</Col>
 					</Row>
-					{/* <Row>
-            <Col>
-              <Animated
-                animationOut="zoomOut"
-                animationOutDuration={timeAnimation}
-                isVisible={visible}
-              >
-                <h1>A: + {props.team.powers.attack.value}</h1>
-              </Animated>
-            </Col>
-          </Row> */}
-					{/* <Row>
-            <Col>
-              <Animated
-                animationOut="zoomOut"
-                animationOutDuration={timeAnimation}
-                isVisible={visible}
-              >
-                <h1>E: + {props.team.powers.energy.value}</h1>
-              </Animated>
-            </Col>
-          </Row> */}
 					<Row>
 						<Col>
 							<Animated animationOut="zoomOut" animationOutDuration={timeAnimation} isVisible={visible}>
 								<h1>
-									<FontAwesomeIcon icon={faSettings.defense.icon} color={faSettings.defense.color} size="3x" />
+									{defense}
 									<br />
 									{Math.floor(props.team.powers.defense.value / 2)}
 								</h1>
@@ -84,13 +79,7 @@ export default function Status(props) {
 						</Col>
 					</Row>
 					<Row>
-						<Col>{/* <Animated
-                animationOut="zoomOut"
-                animationOutDuration={timeAnimation}
-                isVisible={visible}
-              >
-                <h1>SE: + {props.team.status.energy}</h1>
-              </Animated> */}</Col>
+						<Col></Col>
 					</Row>
 				</Container>
 			</div>
