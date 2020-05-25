@@ -9,7 +9,8 @@ import koImg from "./../img/ko.png";
 // import koAudio from "./../mp3/ko.mp3";
 import { Container, Row, Col } from "react-bootstrap";
 import { Animated } from "react-animated-css";
-import NameCloud from "./NameCloud.js";
+// import NameCloud from "./NameCloud.js";
+import ListPlayersText from "./ListPlayersText.js";
 import GameContext from "./GameContext.js";
 import SocketContext from "./SocketContext.js";
 import Team1Context from "./Team1Context.js";
@@ -126,7 +127,7 @@ export default function InGame() {
         <Container fluid className="h-100">
           <Row className="justify-content-md-center h-100">
             <Col xs lg="5" className="text-center align-middle">
-              <NameCloud team={team1} />
+              <ListPlayersText team={team1} />
             </Col>
             <Col xs lg="2" className="text-center align-middle">
               <br />
@@ -140,7 +141,7 @@ export default function InGame() {
               <StartEnterGame />
             </Col>
             <Col xs lg="5" className="text-center align-middle">
-              <NameCloud team={team2} />
+              <ListPlayersText team={team2} />
             </Col>
           </Row>
         </Container>
@@ -153,13 +154,13 @@ export default function InGame() {
         <Container fluid className="h-100">
           <Row className="justify-content-md-center h-100">
             <Col xs lg="5" className="text-center align-middle">
-              <NameCloud team={team1} />
+              <ListPlayersText team={team1} />
             </Col>
             <Col xs lg="2" className="text-center align-middle">
               {showKO()}
             </Col>
             <Col xs lg="5" className="text-center align-middle">
-              <NameCloud team={team2} />
+              <ListPlayersText team={team2} />
             </Col>
           </Row>
         </Container>

@@ -17,6 +17,8 @@ const options = {
   transitionDuration: 1000
 };
 export default function Status(props) {
+
+
   function teamShow() {
     let tags = [];
     if (props.team) {
