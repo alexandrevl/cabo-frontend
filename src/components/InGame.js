@@ -45,6 +45,7 @@ export default function InGame() {
       // );
       played.current = true;
       setTimeout(() => {
+        koAudio.volume = 0.7;
         koAudio.play();
         // console.log("Q");
       }, 1500);
