@@ -9,4 +9,4 @@ deploy:
         - chmod 700 ~/.ssh
         - ssh-keyscan -t rsa 162.241.61.38 >> ~/.ssh/known_hosts
     script:
-        - ssh -o StrictHostKeyChecking=no mrguin98@162.241.61.38 "cd public_html/streamervschat/cabo/frontend/; git pull; npm run build"
+        - ssh -o StrictHostKeyChecking=no mrguin98@162.241.61.38 "cd public_html/streamervschat/cabo/frontend/; git pull"
