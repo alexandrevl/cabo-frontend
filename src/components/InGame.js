@@ -22,6 +22,7 @@ export default function InGame() {
   const gameSettings = useContext(GameContext);
   const [startButtonShow, setStartButtonShow] = useState(false);
   const [winner, setWinner] = useState(false);
+  const [inKo, setInKo] = useState(false);
   const team1 = useContext(Team1Context);
   const team2 = useContext(Team2Context);
 
@@ -44,6 +45,7 @@ export default function InGame() {
       //   played.current
       // );
       played.current = true;
+      setInKo(true);
       setTimeout(() => {
         koAudio.volume = 0.7;
         koAudio.play();
@@ -58,6 +60,7 @@ export default function InGame() {
     if (gameSettings.round > 0) {
       setTimeout(() => {
         setStartButtonShow(true);
+        setInKo(false);
       }, 5000);
       return (
         <>
@@ -69,7 +72,7 @@ export default function InGame() {
             <img src={koImg} width="100%" alt="KO" />
             <br />
             <br />
-            <h1 className="display-3">{winner.name}</h1>
+            <h1 className="display-2">{winner.name}</h1>
           </Animated>
           <br />
           <br />
@@ -155,13 +158,13 @@ export default function InGame() {
         <Container fluid className="h-100">
           <Row className="justify-content-md-center h-100">
             <Col xs lg="5" className="text-center align-middle">
-              <ListPlayersText team={team1} />
+              {!inKo && <ListPlayersText team={team1} />}
             </Col>
             <Col xs lg="2" className="text-center align-middle">
               {showKO()}
             </Col>
             <Col xs lg="5" className="text-center align-middle">
-              <ListPlayersText team={team2} />
+              {!inKo && <ListPlayersText team={team2} />}
             </Col>
           </Row>
         </Container>
