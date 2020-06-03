@@ -47,7 +47,7 @@ export default function InGame() {
       played.current = true;
       setInKo(true);
       setTimeout(() => {
-        koAudio.volume = 0.7;
+        koAudio.volume = 0.5;
         koAudio.play();
         // console.log("Q");
       }, 1500);
@@ -149,7 +149,6 @@ export default function InGame() {
             </Col>
           </Row>
         </Container>
-        <ModalWinner gameSettings={gameSettings} />
       </div>
     );
   } else {

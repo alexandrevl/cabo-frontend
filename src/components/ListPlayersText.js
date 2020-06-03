@@ -35,7 +35,9 @@ export default function ListPlayers(props) {
           color = "yellow";
         }
         return (
-          <span style={{ color: color, fontSize: size }}>{element.name}, </span>
+          <span style={{ color: color, fontSize: size, height: "100%" }}>
+            {element.name},{" "}
+          </span>
         );
       });
     }

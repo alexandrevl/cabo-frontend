@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.852ecd09.chunk.css",
-    "main.js": "/static/js/main.47396145.chunk.js",
-    "main.js.map": "/static/js/main.47396145.chunk.js.map",
+    "main.css": "/static/css/main.fbdbeca4.chunk.css",
+    "main.js": "/static/js/main.a9fb735b.chunk.js",
+    "main.js.map": "/static/js/main.a9fb735b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.36a18cf4.js",
     "runtime-main.js.map": "/static/js/runtime-main.36a18cf4.js.map",
     "static/css/2.47e06e2e.chunk.css": "/static/css/2.47e06e2e.chunk.css",
     "static/js/2.78a7bcf0.chunk.js": "/static/js/2.78a7bcf0.chunk.js",
     "static/js/2.78a7bcf0.chunk.js.map": "/static/js/2.78a7bcf0.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.8f1ca4f461dd608f093be75c31e092d5.js": "/precache-manifest.8f1ca4f461dd608f093be75c31e092d5.js",
+    "precache-manifest.6953f3dbb16111ba761ca058e818f2ca.js": "/precache-manifest.6953f3dbb16111ba761ca058e818f2ca.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.852ecd09.chunk.css.map": "/static/css/main.852ecd09.chunk.css.map",
+    "static/css/main.fbdbeca4.chunk.css.map": "/static/css/main.fbdbeca4.chunk.css.map",
     "static/js/2.78a7bcf0.chunk.js.LICENSE.txt": "/static/js/2.78a7bcf0.chunk.js.LICENSE.txt",
-    "static/media/CaboAtaquePragas.png": "/static/media/CaboAtaquePragas.aff26c2a.png",
-    "static/media/CaboAtaqueVermes.png": "/static/media/CaboAtaqueVermes.bc7e3757.png",
-    "static/media/CaboDefesaPragas.png": "/static/media/CaboDefesaPragas.fd9ccf1f.png",
-    "static/media/CaboDefesaVermes.png": "/static/media/CaboDefesaVermes.bf69fc99.png",
+    "static/media/CaboAtaquePragas.png": "/static/media/CaboAtaquePragas.23937534.png",
+    "static/media/CaboAtaqueVermes.png": "/static/media/CaboAtaqueVermes.b79e156d.png",
+    "static/media/CaboDefesaPragas.png": "/static/media/CaboDefesaPragas.dada4542.png",
+    "static/media/CaboDefesaVermes.png": "/static/media/CaboDefesaVermes.6f164161.png",
     "static/media/ko.png": "/static/media/ko.6aedb4f5.png",
     "static/media/trophy.gif": "/static/media/trophy.d9db92ab.gif",
     "static/media/victory.gif": "/static/media/victory.59d065af.gif",
@@ -27,7 +27,7 @@
     "static/js/runtime-main.36a18cf4.js",
     "static/css/2.47e06e2e.chunk.css",
     "static/js/2.78a7bcf0.chunk.js",
-    "static/css/main.852ecd09.chunk.css",
-    "static/js/main.47396145.chunk.js"
+    "static/css/main.fbdbeca4.chunk.css",
+    "static/js/main.a9fb735b.chunk.js"
   ]
 }
