@@ -46,7 +46,15 @@ export default function Status(props) {
         "zoomInLeft",
         "zoomInRight",
         "fadeInLeftBig",
-        "fadeInRightBig"
+        "fadeInRightBig",
+        "backInDown",
+        "backInLeft",
+        "backInRight",
+        "backInUp",
+        "flip",
+        "lightSpeedInRight",
+        "lightSpeedInLeft",
+        "jackInTheBox"
       ];
       setAnimeIn(animeInDomain[getRandomInt(0, animeInDomain.length - 1)]);
       // let sizeAttack = '5x';
