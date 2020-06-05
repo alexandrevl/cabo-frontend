@@ -12,7 +12,7 @@ export default function Status(props) {
   const [battleId, setBattleId] = useState(true);
   const [attack, setAttack] = useState();
   const [defense, setDefense] = useState();
-  const [animeIn, setAnimeIn] = useState("zoomInUp");
+  const [animeIn, setAnimeIn] = useState("flip");
   // const [faSettings, setFaSettings] = useState({
   // 	attack: { icon: faFireAlt, color: 'red' },
   // 	defense: { icon: faShieldAlt, color: 'blue' },
