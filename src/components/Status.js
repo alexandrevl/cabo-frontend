@@ -43,17 +43,9 @@ export default function Status(props) {
       let animeInDomain = [
         "zoomInDown",
         "zoomInUp",
-        "zoomInLeft",
-        "zoomInRight",
-        "fadeInLeftBig",
-        "fadeInRightBig",
         "backInDown",
-        "backInLeft",
-        "backInRight",
         "backInUp",
         "flip",
-        "lightSpeedInRight",
-        "lightSpeedInLeft",
         "jackInTheBox"
       ];
       setAnimeIn(animeInDomain[getRandomInt(0, animeInDomain.length - 1)]);
